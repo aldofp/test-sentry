@@ -2,6 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  function methodDoesNotExist() {
+    throw new Error('error');
+  }
   return (
     <div className="App">
       <header className="App-header">
