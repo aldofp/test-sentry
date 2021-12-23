@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import * as Sentry from "@sentry/react";
+import { Integrations } from "@sentry/tracing";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -10,6 +12,16 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+Sentry.init({
+  dsn: "https://25a7deb301024a2da60d4a92af37b065@o1097566.ingest.sentry.io/6119110",
+  integrations: [new Integrations.BrowserTracing()],
+
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
+});
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
